@@ -5,4 +5,4 @@ Bought sensor here: https://www.ebay.com/itm/KEYESTUDIO-CCS811-CO2-Carbon-Dioxid
 
 Guide here: https://create.arduino.cc/projecthub/dragos-iosub/arduino-ccs811-co2-tvoc-air-quality-monitor-570af1
 
-IoT: https://www.instructables.com/How-to-Receive-Arduino-Sensor-Data-on-Your-Android/
+Getting data via BlueTooth to (HC-05/HC-06) Android phone : https://www.instructables.com/How-to-Receive-Arduino-Sensor-Data-on-Your-Android/
