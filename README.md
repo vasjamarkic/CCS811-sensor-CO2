@@ -8,3 +8,7 @@ Guide here: https://create.arduino.cc/projecthub/dragos-iosub/arduino-ccs811-co2
 Getting data via BlueTooth to (HC-05/HC-06) Android phone : https://www.instructables.com/How-to-Receive-Arduino-Sensor-Data-on-Your-Android/
 
 Getting data via WiFi (ESP8266 Wi-Fi Module) to website: https://circuitdigest.com/microcontroller-projects/sending-arduino-data-to-webpage
+
+Use of Arduino IoT Cloud: https://create.arduino.cc/projecthub/133030/iot-cloud-getting-started-c93255, https://www.arduino.cc/en/IoT/HomePage, https://create.arduino.cc/iot/things/new
+
+
