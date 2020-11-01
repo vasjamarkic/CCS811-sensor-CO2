@@ -11,4 +11,6 @@ Getting data via WiFi (ESP8266 Wi-Fi Module) to website: https://circuitdigest.c
 
 Use of Arduino IoT Cloud: https://create.arduino.cc/projecthub/133030/iot-cloud-getting-started-c93255, https://www.arduino.cc/en/IoT/HomePage, https://create.arduino.cc/iot/things/new
 
+New IoT tutorial: https://create.arduino.cc/projecthub/jaume_miralles/publish-your-arduino-data-to-the-cloud-9dfaa2 and Circus of things platform: https://circusofthings.com/welcome
+
 
