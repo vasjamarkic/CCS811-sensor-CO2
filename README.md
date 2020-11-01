@@ -13,4 +13,4 @@ Use of Arduino IoT Cloud: https://create.arduino.cc/projecthub/133030/iot-cloud-
 
 New IoT tutorial: https://create.arduino.cc/projecthub/jaume_miralles/publish-your-arduino-data-to-the-cloud-9dfaa2 and Circus of things platform: https://circusofthings.com/welcome
 
-
+And some troubleshootig over http://www.martyncurrey.com/arduino-esp8266/ wifi module.
