@@ -20,3 +20,8 @@ ESP32: Frst how to make it work in Linux? https://github.com/espressif/arduino-e
 2. Start Arduino IDE, File --> Preferences and add this URL link: https://dl.espressif.com/dl/package_esp32_index.json, http://arduino.esp8266.com/stable/package_esp8266com_index.json, click OK.
 3. Tools --> Boards --> Boards Manager ... --> write down in filter ESP32 and pick it up --> install!
 4. In Tools --> Boards choose your own ESP32! 
+5. Add the sSense-CCS811.h library
+6. Copy paste the code from here : https://create.arduino.cc/projecthub/dragos-iosub/arduino-ccs811-co2-tvoc-air-quality-monitor-570af1
+7. The SERIAL_SPEED must be the same in the Seral Monitor! (19200)
+8. Verify, Upload, RESET the ESP32 board with the BOOT button, the measurments should now begin to appear.
+
