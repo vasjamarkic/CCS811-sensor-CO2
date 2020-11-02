@@ -15,13 +15,21 @@ New IoT tutorial: https://create.arduino.cc/projecthub/jaume_miralles/publish-yo
 
 And some troubleshootig over http://www.martyncurrey.com/arduino-esp8266/ wifi module.
 
-ESP32: Frst how to make it work in Linux? https://github.com/espressif/arduino-esp32/blob/master/docs/arduino-ide/debian_ubuntu.md
+-------------------how to make ESP32 work in Linux and Arduino IDE ---------------------------------------------------------
+Reffer to: https://github.com/espressif/arduino-esp32/blob/master/docs/arduino-ide/debian_ubuntu.md
 1. install Arduino IDE 1.8 or greater: https://www.arduino.cc/en/Guide/Linux
 2. Start Arduino IDE, File --> Preferences and add this URL link: https://dl.espressif.com/dl/package_esp32_index.json, http://arduino.esp8266.com/stable/package_esp8266com_index.json, click OK.
 3. Tools --> Boards --> Boards Manager ... --> write down in filter ESP32 and pick it up --> install!
 4. In Tools --> Boards choose your own ESP32! 
-5. Add the sSense-CCS811.h library
-6. Copy paste the code from here : https://create.arduino.cc/projecthub/dragos-iosub/arduino-ccs811-co2-tvoc-air-quality-monitor-570af1
-7. The SERIAL_SPEED must be the same in the Seral Monitor! (19200)
-8. Verify, Upload, RESET the ESP32 board with the BOOT button, the measurments should now begin to appear.
+-------------CCS811 wiring and programming ----------------------------------------------------------------------------------
+5. D22 ~ SCL, D21 ~ SDA, GND ~ GND, VIN ~ VCC, GND ~ WAKE (other PINS in the sensors are NC)
+6. Add the sSense-CCS811.h library
+7. Copy paste the code from here : https://create.arduino.cc/projecthub/dragos-iosub/arduino-ccs811-co2-tvoc-air-quality-monitor-570af1
+8. The SERIAL_SPEED must be the same in the Seral Monitor! (19200)
+9. Verify, Upload, RESET the ESP32 board with the BOOT button, the measurments should now begin to appear. Run Serial Monitor.
+------------WiFi connection ESP32---------------------------------------------------------------------------------------------
+10. Add the WiFi.h library
+11. Write the code: https://techtutorialsx.com/2017/04/24/esp32-connecting-to-a-wifi-network/
+------------IoT---------------------------------------------------------------------------------------------------------------
+
 
