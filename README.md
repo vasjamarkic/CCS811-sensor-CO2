@@ -14,3 +14,9 @@ Use of Arduino IoT Cloud: https://create.arduino.cc/projecthub/133030/iot-cloud-
 New IoT tutorial: https://create.arduino.cc/projecthub/jaume_miralles/publish-your-arduino-data-to-the-cloud-9dfaa2 and Circus of things platform: https://circusofthings.com/welcome
 
 And some troubleshootig over http://www.martyncurrey.com/arduino-esp8266/ wifi module.
+
+ESP32: Frst how to make it work in Linux? https://github.com/espressif/arduino-esp32/blob/master/docs/arduino-ide/debian_ubuntu.md
+1. install Arduino IDE 1.8 or greater: https://www.arduino.cc/en/Guide/Linux
+2. Start Arduino IDE, File --> Preferences and add this URL link: https://dl.espressif.com/dl/package_esp32_index.json, http://arduino.esp8266.com/stable/package_esp8266com_index.json, click OK.
+3. Tools --> Boards --> Boards Manager ... --> write down in filter ESP32 and pick it up --> install!
+4. In Tools --> Boards choose your own ESP32! 
