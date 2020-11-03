@@ -15,7 +15,7 @@ Use of Arduino IoT Cloud: https://create.arduino.cc/projecthub/133030/iot-cloud-
 New IoT tutorial: https://create.arduino.cc/projecthub/jaume_miralles/publish-your-arduino-data-to-the-cloud-9dfaa2 and Circus of things platform: https://circusofthings.com/welcome
 
 And some troubleshootig over http://www.martyncurrey.com/arduino-esp8266/ wifi module.
-![alt text](http://uhttps://raw.githubusercontent.com/AchimPieters/esp32-homekit-camera/master/Images/ESP32-30PIN-DEVBOARD.pngrl/to/img.png)
+![alt text](https://raw.githubusercontent.com/AchimPieters/esp32-homekit-camera/master/Images/ESP32-30PIN-DEVBOARD.png)
 
 -------------------how to make ESP32 work in Linux and Arduino IDE ---------------------------------------------------------
 Reffer to: https://github.com/espressif/arduino-esp32/blob/master/docs/arduino-ide/debian_ubuntu.md
