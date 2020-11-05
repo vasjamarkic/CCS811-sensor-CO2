@@ -12,7 +12,7 @@ Getting data via WiFi (ESP8266 Wi-Fi Module) to website: https://circuitdigest.c
 
 Use of Arduino IoT Cloud: https://create.arduino.cc/projecthub/133030/iot-cloud-getting-started-c93255, https://www.arduino.cc/en/IoT/HomePage, https://create.arduino.cc/iot/things/new
 
-New IoT tutorial: https://create.arduino.cc/projecthub/jaume_miralles/publish-your-arduino-data-to-the-cloud-9dfaa2 and Circus of things platform: https://circusofthings.com/welcome
+Asynhronous web server (Temp. and Humidity): https://www.youtube.com/watch?v=tDdL5urWvH4
 
 And some troubleshootig over http://www.martyncurrey.com/arduino-esp8266/ wifi module.
 ![alt text](https://raw.githubusercontent.com/AchimPieters/esp32-homekit-camera/master/Images/ESP32-30PIN-DEVBOARD.png)
@@ -32,10 +32,12 @@ Reffer to: https://github.com/espressif/arduino-esp32/blob/master/docs/arduino-i
 ------------WiFi connection ESP32---------------------------------------------------------------------------------------------
 10. Add the WiFi.h library
 11. Write the code: https://techtutorialsx.com/2017/04/24/esp32-connecting-to-a-wifi-network/
-------------IoT---------------------------------------------------------------------------------------------------------------
-
+------------IoT-----------ASYNHRONOUS web server------------------------------------------------------------------------------
+12. 
+13.
+14.
 ------------SPI--with----OLED-------------------------------------------------------------------------------------------------
-SPI	  MOSI	  MISO	  CLK	    CS
-VSPI	GPIO 23	GPIO 19	GPIO 18	GPIO 5
-HSPI	GPIO 13	GPIO 12	GPIO 14	GPIO 15
+SPI	 | MOSI	  |MISO	    |CLK	    |CS
+VSPI |GPIO 23	|GPIO 19	|GPIO 18	|GPIO 5
+HSPI |GPIO 13	|GPIO 12	|GPIO 14	|GPIO 15
 
