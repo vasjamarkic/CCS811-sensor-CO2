@@ -1,5 +1,3 @@
-#include <sSense-CCS811.h>
-
 //#include <dummy.h>
 /*Compatible with:
  *    s-Sense CCS811 I2C sensor breakout [PN: SS-CCS811#I2C, SKU: ITBP-6004], info https://itbrainpower.net/sensors/CCS811-CO2-TVOC-I2C-sensor-breakout 
@@ -44,88 +42,164 @@
  * https://itbrainpower.net
  */
 
+#define SERIAL_SPEED 19200
+#include <sSense-CCS811.h>
+#include "WiFi.h"
+#include "ESPAsyncWebServer.h"
+#include <AsyncTCP.h>        //synchronise the upload loop
+//#include <SPI.h>
 
-#define SERIAL_SPEED  19200
+const char* ssid = "HUAWEI-B593-F0B1";
+const char* password =  "DM9TE62FYEN";
 
 CCS811 ssenseCCS811;
+AsyncWebServer server(80);
 
-void setup()
-{
-  DebugPort.begin(SERIAL_SPEED);
-  delay(5000);
-  DebugPort.println("s-Sense CCS811 I2C sensor.");
-  if(!ssenseCCS811.begin(uint8_t(I2C_CCS811_ADDRESS), uint8_t(CCS811_WAKE_PIN), driveMode_1sec))
-    DebugPort.println("Initialization failed.");
-}
-
-void loop()
-{ 
+String readCCS811_CO2() {
   ssenseCCS811.setEnvironmentalData((float)(21.102), (float)(57.73));  // replace with temperature and humidity values from HDC2010 sensor
-  /*if (ssenseCCS811.dataAvailable()){
-  {
-    ssenseCCS811.readAlgorithmResults(); //Calling this function updates the global tVOC and CO2 variables
-
-    .....DebugPort.print("CO2[");
-    DebugPort.print(ssenseCCS811.getCO2());
-    DebugPort.print("] tVOC[");
-    DebugPort.print(ssenseCCS811.gettVOC());
-    DebugPort.print("] millis[");
-    DebugPort.print(millis());
-    DebugPort.print("]");
-    DebugPort.println();
-  }
-  */
   if (ssenseCCS811.checkDataAndUpdate())
   {
-    DebugPort.print("CO2[");
-    DebugPort.print(ssenseCCS811.getCO2());
-    DebugPort.print("] tVOC[");
-    DebugPort.print(ssenseCCS811.gettVOC());
-    DebugPort.print("] Sec[");
-    DebugPort.print(millis()/1000);
-    DebugPort.print("]");
+    DebugPort.print("Measures OK");
     DebugPort.println();
   }
   else if (ssenseCCS811.checkForError())
   {
     ssenseCCS811.printError();
   }
-
-  delay(2000);
-}
-/*
-void setup() {
-  // put your setup code here, to run once:
-Serial.begin(9600);
-Serial.println("CCS811 test");
-if(!ccs.begin()) { 
-  Serial.println("Failed to start sensor! Please check your wiring.");
-  while(1);
-}
-//calibrate temperature sensor
-while(!ccs.available());
-float temp = ccs.calculateTemperature();
-ccs.setTempOffset(temp -25.0);
-}
-
-void loop() {
-  if(ccs.available()){
-    float temp = ccs.calculateTemperature();
-    if(!ccs.readData()){
-      Serial.print("CO2: ");
-      Serial.print(ccs.geteCO2());
-      Serial.print("ppm, TVOC: ");
-      Serial.print(ccs.getTVOC());
-      Serial.print("ppb   Temp:");
-      Serial.println(temp);
-    }
-       else{
-        Serial.println("ERROR!");
-        while(1);         
-       }
+  // Sensor readings may also be up to 2 seconds 'old' (its a very slow sensor)
+  // Read CO2 as ppm
+  int  CO2 = ssenseCCS811.getCO2();
+  if (isnan(CO2)) {    
+    Serial.println("Failed to read from CCS881 sensor!");
+    return "--";
   }
-  delay(500);
-  // put your main code here, to run repeatedly:
+  else {
+    Serial.println(CO2);
+    return String(CO2);
+    }
+  }
+
+String readCCS811_tVOC() {
+  // Sensor readings may also be up to 2 seconds 'old' (its a very slow sensor)
+  int tVOC= ssenseCCS811.gettVOC();
+  if (isnan(tVOC)) {
+    Serial.println("Failed to read from CCS881 sensor!");
+    return "--";
+  }
+  else {
+    Serial.println(tVOC);
+    return String(tVOC);
+  }
+ }
+
+
+const char index_html[] PROGMEM = R"rawliteral(
+<!DOCTYPE HTML><html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <style>
+    html {
+     font-family: Arial;
+     display: inline-block;
+     margin: 0px auto;
+     text-align: center;
+    }
+    h2 { font-size: 3.0rem; }
+    p { font-size: 3.0rem; }
+    .units { font-size: 1.2rem; }
+    .CCS811-labels{
+      font-size: 1.5rem;
+      vertical-align:middle;
+      padding-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+  <h2>ESP32 CCS811 CO2 Server</h2>
+  <p>
+    <i class="fas fa-head-side-mask" style="color:#00add6;"></i> 
+    <span class="CCS811-labels">CO2:</span>
+    <span id="CO2">%CO2%</span>
+    <sup class="units">ppm</sup>
+  </p>
+  <p>
+    <i class="fas fa-smog" style="color:#00add6;"></i> 
+    <span class="CCS811-labels">tVOC:</span>
+    <span id="tVOC">%tVOC%</span>
+    <sup class="units">ppb</sup>
+  </p>
+</body>
+<script>
+setInterval(function ( ) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("CO2").innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("GET", "/CO2", true);
+  xhttp.send();
+}, 5000 ) ;
+
+setInterval(function ( ) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("tVOC").innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("GET", "/tVOC", true);
+  xhttp.send();
+}, 5000 ) ;
+</script>
+</html>)rawliteral";
+
+// Replaces placeholder with CCS811 values
+String processor(const String& var){
+  //Serial.println(var);
+  if(var == "CO2"){
+    return readCCS811_CO2();
+  }
+  else if(var == "tVOC"){
+    return readCCS811_tVOC();
+  }
+  return String();
+}
+
+void setup()
+{
+  //Serial.begin(115200);
+  DebugPort.begin(SERIAL_SPEED);
+  delay(5000);
+  DebugPort.println("s-Sense CCS811 I2C sensor.");
+  if(!ssenseCCS811.begin(uint8_t(I2C_CCS811_ADDRESS), uint8_t(CCS811_WAKE_PIN), driveMode_1sec))
+    DebugPort.println("Initialization failed.");
+    
+  WiFi.begin(ssid, password);
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(1000);
+    Serial.println("Connecting to WiFi..");
+  }
+  Serial.println("Connected to the WiFi network");
+  Serial.println("IP address: ");
+  Serial.println(WiFi.localIP());
+
+  // Route for root / web page
+  server.on("/", HTTP_GET, [](AsyncWebServerRequest *request){
+    request->send_P(200, "text/html", index_html, processor);
+  });
+  server.on("/CO2", HTTP_GET, [](AsyncWebServerRequest *request){
+    request->send_P(200, "text/plain", readCCS811_CO2().c_str());
+  });
+  server.on("/tVOC", HTTP_GET, [](AsyncWebServerRequest *request){
+    request->send_P(200, "text/plain", readCCS811_tVOC().c_str());
+  });
+  server.begin();
 
 }
-*/
+
+void loop()
+{ 
+
+   }
