@@ -37,6 +37,7 @@ Reffer to: https://github.com/espressif/arduino-esp32/blob/master/docs/arduino-i
 ------------IoT-----------ASYNHRONOUS web server---------------------------------
 
 The tutorial HERE: https://randomnerdtutorials.com/esp32-dht11-dht22-temperature-humidity-web-server-arduino-ide/
+
 12. Get the library here: https://github.com/me-no-dev/ESPAsyncWebServer or download de ZIP file: https://github.com/me-no-dev/ESPAsyncWebServer/archive/master.zip
 13. Unzip the .zip folder and you should get ESPAsyncWebServer-master folder
 14. Rename your folder from ESPAsyncWebServer-master to ESPAsyncWebServer
@@ -50,7 +51,9 @@ You should have a .zip folder in your Downloads folder
 18. Rename your folder from AsyncTCP-master to AsyncTCP
 19. Move the AsyncTCP folder to your Arduino IDE installation libraries folder
 20. Finally, re-open your Arduino IDE
-------------SPI--with----OLED-------------------------------------------------------------------------------------------------
+
+------------SPI--with----OLED--------------------------------------------------
+
 SPI	 | MOSI	  |MISO	    |CLK	    |CS
 VSPI |GPIO 23	|GPIO 19	|GPIO 18	|GPIO 5
 HSPI |GPIO 13	|GPIO 12	|GPIO 14	|GPIO 15
