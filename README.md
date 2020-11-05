@@ -12,7 +12,8 @@ Getting data via WiFi (ESP8266 Wi-Fi Module) to website: https://circuitdigest.c
 
 Use of Arduino IoT Cloud: https://create.arduino.cc/projecthub/133030/iot-cloud-getting-started-c93255, https://www.arduino.cc/en/IoT/HomePage, https://create.arduino.cc/iot/things/new
 
-Asynhronous web server (Temp. and Humidity): https://www.youtube.com/watch?v=tDdL5urWvH4
+Asynhronous web server (Temp. and Humidity): https://www.youtube.com/watch?v=tDdL5urWvH4 and 
+https://randomnerdtutorials.com/esp32-dht11-dht22-temperature-humidity-web-server-arduino-ide/
 
 And some troubleshootig over http://www.martyncurrey.com/arduino-esp8266/ wifi module.
 ![alt text](https://raw.githubusercontent.com/AchimPieters/esp32-homekit-camera/master/Images/ESP32-30PIN-DEVBOARD.png)
@@ -33,9 +34,17 @@ Reffer to: https://github.com/espressif/arduino-esp32/blob/master/docs/arduino-i
 10. Add the WiFi.h library
 11. Write the code: https://techtutorialsx.com/2017/04/24/esp32-connecting-to-a-wifi-network/
 ------------IoT-----------ASYNHRONOUS web server------------------------------------------------------------------------------
-12. 
-13.
-14.
+The tutorial HERE: https://randomnerdtutorials.com/esp32-dht11-dht22-temperature-humidity-web-server-arduino-ide/
+12. Get the library here: https://github.com/me-no-dev/ESPAsyncWebServer or download de ZIP file: https://github.com/me-no-dev/ESPAsyncWebServer/archive/master.zip
+13. Unzip the .zip folder and you should get ESPAsyncWebServer-master folder
+14. Rename your folder from ESPAsyncWebServer-master to ESPAsyncWebServer
+15. Move the ESPAsyncWebServer folder to your Arduino IDE installation libraries folder
+The ESPAsyncWebServer library requires the AsyncTCP library to work. Follow the next steps to install that library:
+16. Click here https://github.com/me-no-dev/AsyncTCP/archive/master.zip to download the AsyncTCP library. You should have a .zip folder in your Downloads folder
+17. Unzip the .zip folder and you should get AsyncTCP-master folder
+18. Rename your folder from AsyncTCP-master to AsyncTCP
+19. Move the AsyncTCP folder to your Arduino IDE installation libraries folder
+20. Finally, re-open your Arduino IDE
 ------------SPI--with----OLED-------------------------------------------------------------------------------------------------
 SPI	 | MOSI	  |MISO	    |CLK	    |CS
 VSPI |GPIO 23	|GPIO 19	|GPIO 18	|GPIO 5
