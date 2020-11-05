@@ -33,7 +33,9 @@ Reffer to: https://github.com/espressif/arduino-esp32/blob/master/docs/arduino-i
 ------------WiFi connection ESP32---------------------------------------------------------------------------------------------
 10. Add the WiFi.h library
 11. Write the code: https://techtutorialsx.com/2017/04/24/esp32-connecting-to-a-wifi-network/
+
 ------------IoT-----------ASYNHRONOUS web server---------------------------------
+
 The tutorial HERE: https://randomnerdtutorials.com/esp32-dht11-dht22-temperature-humidity-web-server-arduino-ide/
 12. Get the library here: https://github.com/me-no-dev/ESPAsyncWebServer or download de ZIP file: https://github.com/me-no-dev/ESPAsyncWebServer/archive/master.zip
 13. Unzip the .zip folder and you should get ESPAsyncWebServer-master folder
@@ -41,7 +43,9 @@ The tutorial HERE: https://randomnerdtutorials.com/esp32-dht11-dht22-temperature
 15. Move the ESPAsyncWebServer folder to your Arduino IDE installation libraries folder
 
 The ESPAsyncWebServer library requires the AsyncTCP library to work. Follow the next steps to install that library:
-16. Click here https://github.com/me-no-dev/AsyncTCP/archive/master.zip to download the AsyncTCP library. You should have a .zip folder in your Downloads folder
+
+16. Click here https://github.com/me-no-dev/AsyncTCP/archive/master.zip to download the AsyncTCP library. 
+You should have a .zip folder in your Downloads folder
 17. Unzip the .zip folder and you should get AsyncTCP-master folder
 18. Rename your folder from AsyncTCP-master to AsyncTCP
 19. Move the AsyncTCP folder to your Arduino IDE installation libraries folder
