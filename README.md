@@ -16,7 +16,7 @@ Asynhronous web server (Temp. and Humidity): https://www.youtube.com/watch?v=tDd
 https://randomnerdtutorials.com/esp32-dht11-dht22-temperature-humidity-web-server-arduino-ide/
 
 And some troubleshootig over http://www.martyncurrey.com/arduino-esp8266/ wifi module.
-![alt text](https://raw.githubusercontent.com/AchimPieters/esp32-homekit-camera/master/Images/ESP32-30PIN-DEVBOARD.png)
+![alt text](https://raw.githubusercontent.com/espressif/arduino-esp32/master/docs/esp32_pinmap.png)
 
 -------------------how to make ESP32 work in Linux and Arduino IDE ---------------------------------------------------------
 Reffer to: https://github.com/espressif/arduino-esp32/blob/master/docs/arduino-ide/debian_ubuntu.md
