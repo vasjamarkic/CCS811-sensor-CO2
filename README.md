@@ -3,18 +3,6 @@ Measuring CO2 and tVOC with Arduino
 
 
 © 2020 GitHub, Inc.
-Terms
-Privacy
-
-    Security
-    Status
-    Help
-    Contact GitHub
-    Pricing
-    API
-    Training
-    Blog
-    About
 
 /133127477135?_trkparms=aid%3D111001%26algo%3DREC.SEED%26ao%3D1%26asc%3D225074%26meid%3Df92177c013464b938a77a630f5ee24c9%26pid%3D100675%26rk%3D1%26rkt%3D15%26mehot%3Dpp%26sd%3D133127477135%26itm%3D133127477135%26pmt%3D0%26noa%3D1%26pg%3D2380057%26brand%3DArduino&_trksid=p2380057.c100675.m4236&_trkparms=pageci%3A0a4ae3a1-185c-11eb-b502-760968028e57%7Cparentrq%3A6a576af41750a45e4ef47c20ffebe708%7Ciid%3A1
 
@@ -68,7 +56,7 @@ You should have a .zip folder in your Downloads folder
 21. The #include is <AsyncTCP.h> !
 
 ------------SPI--with----OLED--------------------------------------------------
-
+22. Pinout connections:
 GND - GND
 Vcc - 3.3V
 D0 (MISO) - GPIO19
@@ -78,4 +66,9 @@ DC - GPIO18
 CS - GPIO5
 
 ----------------------------
-
+Added Plotter function to draw graph in Java via UART  (USB) port
+Link and guide: https://github.com/devinaconley/arduino-plotter/wiki/Installation-and-Quickstart
+23. Find the library (search for Plotter) and install in ARDUINO IDE
+24. Include the library
+25. Code ...
+26. Download the Arduino Listener and run it.  (in linux type ./listener to open the app in Xterm)
